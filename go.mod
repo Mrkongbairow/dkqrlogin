@@ -1,3 +1,3 @@
-module github.com/Mrkongbairow/dkqr-login
+module github.com/Mrkongbairow/dkqrlogin
 
-go 1.21
+go 1.22

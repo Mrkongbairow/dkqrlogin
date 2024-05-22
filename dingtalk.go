@@ -25,15 +25,17 @@ type DingTalk struct {
 	httpClient  *http.Client
 }
 
-var (
+type DingQrClient struct {
 	Dc         DingTalk
 	TokenCatch *TTLCache
-)
+}
 
-func Init(client DingTalk) {
-	Dc = client
-	Dc.httpClient = http.DefaultClient
-	TokenCatch = NewTTL()
+func Init(client DingTalk) *DingQrClient {
+	client.httpClient = http.DefaultClient
+	return &DingQrClient{
+		Dc:         client,
+		TokenCatch: NewTTL(),
+	}
 }
 
 func (d *DingTalk) QRUrl(redirect string) string {
